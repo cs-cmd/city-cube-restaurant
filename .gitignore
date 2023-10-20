@@ -1,3 +1,2 @@
 # ignore Node modules and dist folder
 node_modules
-dist
