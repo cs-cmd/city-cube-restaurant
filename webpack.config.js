@@ -14,4 +14,16 @@ module.exports = {
             template: './src/index.html'
     })
     ],
+    module: {
+        rules: [
+            {
+                test: /\.css$/i,
+                use: [ 'style-loader', 'css-loader' ],
+            }, 
+            {
+                test: /\.(jpg|svg|pdf|jpeg|gif)$/i,
+                type: 'asset/resource',
+            }
+        ],
+    },
 }
