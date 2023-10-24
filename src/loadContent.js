@@ -73,9 +73,10 @@ export const pageLoader = (function() {
 
     
     function clearTabContainer() {
-        container.querySelectorAll('*').forEach((node) => {
-            node.remove()
-        });
+        let currTab = document.getElementById('tab');
+        if (currTab !== null) {
+            currTab.remove();
+        }
     }
 
     function changeTab(newTab) {
