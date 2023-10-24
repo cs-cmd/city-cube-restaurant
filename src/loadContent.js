@@ -1,33 +1,52 @@
+// imports
 import { createHomePage } from "./pages/createHomePage";
 import { createContactPage } from "./pages/createContactPage";
 import { createAboutPage } from "./pages/createAboutPage";
 import { createMenuPage } from "./pages/createMenuPage";
 
+// image paths
 const homeImagePath = require('../res/images/storefront.jpeg');
 
+// style paths 
+// pageLoader object
 export const pageLoader = (function() {
-    const container = document.getElementById('tab-container');
+    // current page is used to keep track of current page (to prevent
+    // navigating from current page to current page (prevent swaps in inserts),
+    // currentPageButton is used to keep track of the current page's button
+    // to remove current-tab class when switching tabs
     let currentPage = null;
     let currentPageButton = null;
+    
+    // cache different pages for quick retrieval (cuts down on processing)
     let homePage = null;
     let aboutPage = null;
     let menuPage = null;
     let contactPage = null;
 
+    // set current page method
     const setCurrentPage = (pageButton) => {
+        // main container
+        let container = document.getElementById('tab-container')
+        
+        // get tab attibute from button clicked
         let newPageName = pageButton.getAttribute('tab');
+        // create variable to keep track of new page.
         let newPage = null;
 
+        // switch statement to find new page.
+        // if the page variable for the tag attribute is null, create
+        // the page (pseduo-caching). Then, assign page to the newPage var
+        // if default, error and print value
         switch(newPageName) {
             case "home":
                 console.log('home');
                 if (homePage === null) {
                     homePage = createHomePage(homeImagePath);
+                    addChangeTab(homePage);
                 }
                 newPage = homePage;
                 break;
             case "about":
-                // do about
                 console.log('about');
                 if (aboutPage === null) {
                     aboutPage = createAboutPage();
@@ -40,7 +59,6 @@ export const pageLoader = (function() {
                     menuPage = createMenuPage();
                 }
                 newPage = menuPage;
-                // do menu
                 break;
             case "contact":
                 console.log('contact');
@@ -48,19 +66,19 @@ export const pageLoader = (function() {
                     contactPage = createContactPage();
                 }
                 newPage = contactPage;
-                // do contact
                 break;
             default:
-                console.log(`Invalid page selection: ${newPage}`);
+                console.log(`Invalid page selection: ${newPageName}`);
                 break;
         };
 
+        // if an error occurred, return
         if (newPage === null) {
-            console.log('error; returning...');
+            console.log(':: newPage is null | Returning ::');
             return;
         }
         if (currentPage === newPage) {
-            console.log('pages are same; returning...');
+            console.log(':: Current page and new page are same | Returning ::');
             return;
         }
 
@@ -85,6 +103,17 @@ export const pageLoader = (function() {
         }
         newTab.classList.add('current-tab');
         currentPageButton = newTab;
+    }
+
+    function addChangeTab(container) {
+        console.log('in addChangeTab');
+        container.querySelectorAll('.tab-nav-link').forEach((node) => {
+            node.addEventListener('click', () => {
+                // this is an ugly little hack to get the button that was pressed and pass it in as the
+                // button click. Very ugly, but it works.
+                setCurrentPage(document.querySelector(`.page-nav li[tab=${node.getAttribute('tab')}]`));
+            });
+        });
     }
 
     return { setCurrentPage };

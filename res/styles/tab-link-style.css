@@ -1,0 +1,11 @@
+@import url('./page-styles.css');
+
+.tab-nav-link {
+    color: var(--accent-main);
+    text-decoration: underline;
+}
+
+.tab-nav-link:hover {
+    color: var(--accent-blend-second);
+    cursor: pointer;
+}

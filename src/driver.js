@@ -7,3 +7,4 @@ document.querySelectorAll('.page-nav li').forEach(function(node) {
 });
 
 document.addEventListener('load', pageLoader.setCurrentPage(document.querySelector('.page-nav li')));
+

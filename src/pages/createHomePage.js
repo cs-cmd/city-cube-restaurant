@@ -1,4 +1,5 @@
 import { setUpBaseDiv } from "./createBaseline";
+import '../../res/styles/tab-link-style.css';
 
 export function createHomePage(homeImagePath) {
     // create home page
@@ -43,15 +44,24 @@ export function createHomePage(homeImagePath) {
     homePageDiv.appendChild(p2);
 
     const p3 = document.createElement('p');
-    p3.innerText = "As a member of the CS/CMD umbrella conglomerate, you can use your ::CS/CREDIT:: here to purchase your goods! You can inquire more about these options in our ";
+    p3.innerHTML = "As a member of the CS/CMD umbrella conglomerate, you can use your ::CS/CREDIT:: here to purchase your goods! You can inquire more about these options in our ";
     const contactLink = document.createElement('a');
-    contactLink.href = '#';
-    contactLink.innerText = "contact form.";
-    p3.appendChild(contactLink);
+    contactLink.innerText = "contact form";
+    contactLink.classList.add('tab-nav-link');
+    contactLink.setAttribute('tab', 'contact');
+    p3.innerHTML += contactLink.outerHTML;
+    p3.innerHTML += '.';
     homePageDiv.appendChild(p3);
 
+
     const p4 = document.createElement('p');
-    p4.innerText = "Interested in how our store came to be in the City? View our 'about page' to read about our founder's journey through the bureaucratic jungle to secure a foothold in the food industry.";
+    p4.innerHTML = "Interested in how our store came to be in the City? " 
+    const aboutLink = document.createElement('a');
+    aboutLink.innerText = 'Our about page';
+    aboutLink.classList.add('tab-nav-link');
+    aboutLink.setAttribute('tab', 'about');
+    p4.innerHTML += aboutLink.outerHTML;
+    p4.innerHTML += " to read about our founder's journey through the bureaucratic jungle to secure a foothold in the food industry.";
     homePageDiv.appendChild(p4);
     
     return homePageDiv;
