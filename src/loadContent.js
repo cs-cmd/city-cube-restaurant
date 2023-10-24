@@ -87,9 +87,10 @@ export const pageLoader = (function() {
 
         clearTabContainer();
         changeTab(pageButton);
-
         container.appendChild(newPage);
         currentPage = newPage;
+        // bring user to top of window
+        window.scrollTo(0, 0);
     }
 
     
