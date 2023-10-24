@@ -1,4 +1,4 @@
-import { setUpBaseDiv } from "./createBaseline";
+import { setUpBaseDiv,createLink } from "./createBaseline";
 import '../../res/styles/tab-link-style.css';
 
 export function createHomePage(homeImagePath) {
@@ -42,16 +42,16 @@ export function createHomePage(homeImagePath) {
 
     // add second paragraph
     const p2 = document.createElement('p');
-    p2.innerText = "Our patented formula of nutrients and minerals sourced from exotic locations across our planet provides you with everything your body needs to function in our society!";
+    p2.innerHTML = "Our patented formula of nutrients and minerals sourced from exotic locations across our planet provides you with everything your body needs to function in our society! View ";
+    const menuLink = createLink('our menu', 'menu');
+    p2.innerHTML += menuLink.outerHTML;
+    p2.innerHTML += ' to get an idea of what our store specializes in!';
     homePageDiv.appendChild(p2);
 
     // Add third paragraph and link to contact form
     const p3 = document.createElement('p');
     p3.innerHTML = "As a member of the CS/CMD umbrella conglomerate, you can use your ::CS/CREDIT:: here to purchase your goods! You can inquire more about these options in our ";
-    const contactLink = document.createElement('a');
-    contactLink.innerText = "contact form";
-    contactLink.classList.add('tab-nav-link');
-    contactLink.setAttribute('tab', 'contact');
+    const contactLink = createLink('contact form', 'contact');
     p3.innerHTML += contactLink.outerHTML;
     p3.innerHTML += '.';
     homePageDiv.appendChild(p3);
@@ -59,10 +59,7 @@ export function createHomePage(homeImagePath) {
     // add fourth paragraph and link to about page
     const p4 = document.createElement('p');
     p4.innerHTML = "Interested in how our store came to be in the City? View " 
-    const aboutLink = document.createElement('a');
-    aboutLink.innerText = 'our about page';
-    aboutLink.classList.add('tab-nav-link');
-    aboutLink.setAttribute('tab', 'about');
+    const aboutLink = createLink('our about page', 'about');
     p4.innerHTML += aboutLink.outerHTML;
     p4.innerHTML += " to learn about our founder's journey through the bureaucratic jungle to secure a foothold in the food industry here in our beautiful City.";
     homePageDiv.appendChild(p4);

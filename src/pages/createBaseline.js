@@ -4,3 +4,12 @@ export function setUpBaseDiv() {
     
     return mainDiv;
 }
+
+export function createLink(innerText, tab) {
+    const link = document.createElement('a');
+    link.innerText = innerText;
+    link.setAttribute('tab', tab);
+    link.classList.add('tab-nav-link');
+
+    return link;
+}

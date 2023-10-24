@@ -50,6 +50,7 @@ export const pageLoader = (function() {
                 console.log('about');
                 if (aboutPage === null) {
                     aboutPage = createAboutPage();
+                    addChangeTab(aboutPage);
                 }
                 newPage = aboutPage;
                 break;
@@ -57,6 +58,7 @@ export const pageLoader = (function() {
                 console.log('menu');
                 if (menuPage === null) {
                     menuPage = createMenuPage();
+                    addChangeTab(menuPage);
                 }
                 newPage = menuPage;
                 break;
@@ -64,6 +66,7 @@ export const pageLoader = (function() {
                 console.log('contact');
                 if (contactPage === null) {
                     contactPage = createContactPage();
+                    addChangeTab(contactPage);
                 }
                 newPage = contactPage;
                 break;
@@ -97,6 +100,7 @@ export const pageLoader = (function() {
         }
     }
 
+    // used to change current tab CSS
     function changeTab(newTab) {
         if (currentPageButton !== null) {
             currentPageButton.classList.remove('current-tab');
@@ -105,6 +109,7 @@ export const pageLoader = (function() {
         currentPageButton = newTab;
     }
 
+    // used to add changeTab functionality to links in the page
     function addChangeTab(container) {
         console.log('in addChangeTab');
         container.querySelectorAll('.tab-nav-link').forEach((node) => {
