@@ -1,9 +1,14 @@
-import { createHomePage } from "./pages/createPages";
+import { createHomePage } from "./pages/createHomePage";
+import { createContactPage } from "./pages/createContactPage";
+import { createAboutPage } from "./pages/createAboutPage";
+import { createMenuPage } from "./pages/createMenuPage";
+
 const homeImagePath = require('../res/images/storefront.jpeg');
 
 export const pageLoader = (function() {
     const container = document.getElementById('tab-container');
     let currentPage = null;
+    let currentPageButton = null;
     let homePage = null;
     let aboutPage = null;
     let menuPage = null;
@@ -25,14 +30,14 @@ export const pageLoader = (function() {
                 // do about
                 console.log('about');
                 if (aboutPage === null) {
-                    // aboutPage = createAboutPage();
+                    aboutPage = createAboutPage();
                 }
                 newPage = aboutPage;
                 break;
             case "menu": 
                 console.log('menu');
                 if (menuPage === null) {
-                    // menuPage = createMenuPage();
+                    menuPage = createMenuPage();
                 }
                 newPage = menuPage;
                 // do menu
@@ -40,7 +45,7 @@ export const pageLoader = (function() {
             case "contact":
                 console.log('contact');
                 if (contactPage === null) {
-                    // contactPage = createContactPage();
+                    contactPage = createContactPage();
                 }
                 newPage = contactPage;
                 // do contact
@@ -60,14 +65,26 @@ export const pageLoader = (function() {
         }
 
         clearTabContainer();
+        changeTab(pageButton);
+
         container.appendChild(newPage);
         currentPage = newPage;
     }
 
+    
     function clearTabContainer() {
         container.querySelectorAll('*').forEach((node) => {
             node.remove()
         });
     }
+
+    function changeTab(newTab) {
+        if (currentPageButton !== null) {
+            currentPageButton.classList.remove('current-tab');
+        }
+        newTab.classList.add('current-tab');
+        currentPageButton = newTab;
+    }
+
     return { setCurrentPage };
 })();

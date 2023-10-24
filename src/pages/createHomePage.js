@@ -1,7 +1,8 @@
+import { setUpBaseDiv } from "./createBaseline";
+
 export function createHomePage(homeImagePath) {
     // create home page
-    const homePageDiv = document.createElement('div');
-    homePageDiv.id = 'tab';
+    const homePageDiv = setUpBaseDiv();
 
     // set up and add main header
     const mainHeader = document.createElement('h1');

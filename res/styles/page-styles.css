@@ -59,7 +59,7 @@ header > *, #tab-container, footer{
     color: var(--accent-blend-main);
     transition: transform .25s;
     border: 1px solid var(--accent-blend-main);
-    border-radius: 20px;
+    border-radius: 15px;
 
 }
 
@@ -70,6 +70,12 @@ header > *, #tab-container, footer{
 
 .page-nav li:active {
     filter: brightness(.75);
+}
+
+li.current-tab {
+    background-color: var(--accent-main);
+    border: none;
+    color: var(--bg-main);
 }
 
 .page-image {
@@ -96,7 +102,11 @@ figcaption {
 }
 
 
+#tab {
+    display: flex;
+    flex-direction: column;
 
+}
 
 
 
