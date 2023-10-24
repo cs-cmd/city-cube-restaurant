@@ -35,14 +35,17 @@ export function createHomePage(homeImagePath) {
     pageBreak.classList.add('page-break');
     homePageDiv.appendChild(pageBreak);
 
+    // Add first paragraph
     const p1 = document.createElement('p');
     p1.innerText = "With locations from Downtown to the Upper Sides, CityCube is your one-stop-shop for quick-and-easy meal replacements!";
     homePageDiv.appendChild(p1);
 
+    // add second paragraph
     const p2 = document.createElement('p');
     p2.innerText = "Our patented formula of nutrients and minerals sourced from exotic locations across our planet provides you with everything your body needs to function in our society!";
     homePageDiv.appendChild(p2);
 
+    // Add third paragraph and link to contact form
     const p3 = document.createElement('p');
     p3.innerHTML = "As a member of the CS/CMD umbrella conglomerate, you can use your ::CS/CREDIT:: here to purchase your goods! You can inquire more about these options in our ";
     const contactLink = document.createElement('a');
@@ -53,16 +56,17 @@ export function createHomePage(homeImagePath) {
     p3.innerHTML += '.';
     homePageDiv.appendChild(p3);
 
-
+    // add fourth paragraph and link to about page
     const p4 = document.createElement('p');
-    p4.innerHTML = "Interested in how our store came to be in the City? " 
+    p4.innerHTML = "Interested in how our store came to be in the City? View " 
     const aboutLink = document.createElement('a');
-    aboutLink.innerText = 'Our about page';
+    aboutLink.innerText = 'our about page';
     aboutLink.classList.add('tab-nav-link');
     aboutLink.setAttribute('tab', 'about');
     p4.innerHTML += aboutLink.outerHTML;
-    p4.innerHTML += " to read about our founder's journey through the bureaucratic jungle to secure a foothold in the food industry.";
+    p4.innerHTML += " to learn about our founder's journey through the bureaucratic jungle to secure a foothold in the food industry here in our beautiful City.";
     homePageDiv.appendChild(p4);
     
+    // return div
     return homePageDiv;
 }
