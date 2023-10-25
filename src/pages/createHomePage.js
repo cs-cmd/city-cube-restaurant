@@ -23,6 +23,7 @@ export function createHomePage(homeImagePath) {
     image.src = homeImagePath;
     image.alt = 'AI-generated image of storefront with a bright light in a dystopian city';
     image.classList.add('page-image');
+    
     // create figure caption element
     const figCap = document.createElement('figcaption');
     figCap.innerText = "CityCube's first brick-and-mortar store in Downtown, near 7th Street Station";
