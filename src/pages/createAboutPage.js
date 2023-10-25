@@ -1,4 +1,6 @@
 import { setUpBaseDiv } from "./createBaseline";
+const founderImage = require('../../res/images/founders/founders1.jpeg');
+const factoryImage = require('../../res/images/factory-images/factory2.jpg');
 
 export function createAboutPage() {
     // set up base div
@@ -23,7 +25,7 @@ export function createAboutPage() {
     // add figure, image and figure caption
     const mainFig = document.createElement('figure');
     const founders1 = new Image();
-    founders1.src = '../../res/images/founders/founders1.jpeg';
+    founders1.src = founderImage;
     founders1.classList.add('page-image');
     const figCap1 = document.createElement('figcaption');
     figCap1.innerText = 'Mohammad and Raz in front of their first Sidelines factory';
@@ -58,7 +60,7 @@ export function createAboutPage() {
     // add second figure, image, and caption
     const fig2 = document.createElement('figure');
     const factory1 = new Image();
-    factory1.src = '../../res/images/factory-images/factory2.jpg';
+    factory1.src = factoryImage;
     factory1.classList.add('page-image');
     const figCap2 = document.createElement('figcaption');
     figCap2.innerText = 'The Sidelines factory interior during production';
