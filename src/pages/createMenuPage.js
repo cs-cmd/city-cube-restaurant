@@ -1,7 +1,14 @@
 import { createLink, setUpBaseDiv } from "./createBaseline";
 import '../../res/styles/menu-grid-style.css';
+const foodImagePath = require('../../res/images/food-images/food1.jpg');
 
 export function createMenuPage() {
+    const foodDesc = [
+        'Tasty Treat 1',
+        'Tasty Treat 2',
+        'Tasty Treat 3'
+    ];
+
     let mainDiv = setUpBaseDiv();
    
     const mainHeader = document.createElement('h1');
@@ -19,13 +26,13 @@ export function createMenuPage() {
     const menu = document.createElement('div');
     menu.classList.add('menu');
 
-    for(let i = 0; i < 6; ++i) {
+    for(let i = 0; i < 3; ++i) {
         const cell = document.createElement('figure');
         cell.classList.add('cell');
         const image = new Image();
-        // image.src = src;
+        image.src = foodImagePath;
         const figCap = document.createElement('figcaption');
-        figCap.innerText = 'item';
+        figCap.innerText = foodDesc[i];
         cell.appendChild(image);
         cell.appendChild(figCap);
 

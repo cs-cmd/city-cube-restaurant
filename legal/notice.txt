@@ -9,3 +9,6 @@ Any images used in this site, unless otherwise specified in this text document, 
 
 The following images are not AI generated and were sourced from:
     - n/a
+
+Fonts used, external from those used by default in the browser, were retrieved from the Internet.
+
