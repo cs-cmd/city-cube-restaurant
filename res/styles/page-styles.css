@@ -4,18 +4,18 @@
     --accent-second: #caa999;
     --accent-blend-main: #94c5bf;
     --accent-blend-second: #afb7ac;
-    --page-content-width: clamp(350px, 100%, 750px);
+    --page-content-width: clamp(300px, 100%, 750px);
 }
 
 .page-break {
     width: 100%;
     height: 1px;
     background-image: linear-gradient(270deg, var(--accent-main), var(--accent-second));
-    margin-bottom: 10px;
 }
 
 html {
     height: 100vh;
+    font-family: sans-serif;
 }
 body {
     padding: 0px;
@@ -45,7 +45,7 @@ header > *, #tab-container, footer{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     margin: 0px;
-    padding: 10px;
+    padding: 10px 0px;
     gap: 10px;
     justify-items: center;
 }
@@ -101,11 +101,48 @@ figcaption {
     padding: 5px;
 }
 
+#tab {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+#tab p {
+    padding: 0px 0px;
+   margin-left: 5px;
+   margin-right: 5px;
+}
 
 footer {
-    --top-border-radius: 50%;
     flex: 0 0 auto;
     text-align: center;
     font-size: .9rem;
     color: var(--accent-blend-main);
+}
+
+.footer-links {
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+    align-content: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.footer-links > * {
+    display: flex;
+    align-items: center;
+    margin-top: 10px 0px;
+}
+.link-icon {
+    margin: 0px;
+    padding: 0px;
+    height: fit-content
+}
+
+
+.link-icon path {
+    fill: var(--accent-blend-main);
+
 }
