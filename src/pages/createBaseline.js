@@ -6,6 +6,7 @@ export function setUpBaseDiv() {
 }
 
 export function createLink(innerText, tab) {
+    // create link based on innertext and tab given
     const link = document.createElement('a');
     link.innerText = innerText;
     link.setAttribute('tab', tab);

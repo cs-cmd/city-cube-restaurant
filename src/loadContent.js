@@ -71,7 +71,7 @@ export const pageLoader = (function() {
                 newPage = contactPage;
                 break;
             default:
-                console.log(`Invalid page selection: ${newPageName}`);
+                console.log(`:: Invalid page selection: ${newPageName} ::`);
                 break;
         };
 
@@ -112,7 +112,6 @@ export const pageLoader = (function() {
 
     // used to add changeTab functionality to links in the page
     function addChangeTab(container) {
-        console.log('in addChangeTab');
         container.querySelectorAll('.tab-nav-link').forEach((node) => {
             node.addEventListener('click', () => {
                 // this is an ugly little hack to get the button that was pressed and pass it in as the
