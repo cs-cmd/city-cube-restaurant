@@ -41,7 +41,7 @@ export function createAboutPage() {
 
     // add second paragraph
     const p2 = document.createElement('p');
-    p2.innerText = 'Their gamble paid off! CityCube\'s location, being near a major hub of city foot-traffic, bright them many new customers, allured by the cost-effective nature of quick-made food, like the Cubes.';
+    p2.innerText = 'Their gamble paid off! CityCube\'s location, being near a major hub of city foot-traffic, brought them many new customers, allured by the cost-effective nature of quick-made food, like the Cubes.';
     mainDiv.appendChild(p2);
 
     // add clone of line break
