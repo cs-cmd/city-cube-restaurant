@@ -39,34 +39,26 @@ export const pageLoader = (function() {
         // if default, error and print value
         switch(newPageName) {
             case "home":
-                console.log('home');
                 if (homePage === null) {
                     homePage = createHomePage(homeImagePath);
-                    addChangeTab(homePage);
                 }
                 newPage = homePage;
                 break;
             case "about":
-                console.log('about');
                 if (aboutPage === null) {
                     aboutPage = createAboutPage();
-                    addChangeTab(aboutPage);
                 }
                 newPage = aboutPage;
                 break;
             case "menu": 
-                console.log('menu');
                 if (menuPage === null) {
                     menuPage = createMenuPage();
-                    addChangeTab(menuPage);
                 }
                 newPage = menuPage;
                 break;
             case "contact":
-                console.log('contact');
                 if (contactPage === null) {
                     contactPage = createContactPage();
-                    addChangeTab(contactPage);
                 }
                 newPage = contactPage;
                 break;
@@ -77,11 +69,9 @@ export const pageLoader = (function() {
 
         // if an error occurred, return
         if (newPage === null) {
-            console.log(':: newPage is null | Returning ::');
+            console.log(':: newPage is null; returning ::');
             return;
-        }
-        if (currentPage === newPage) {
-            console.log(':: Current page and new page are same | Returning ::');
+        } else if (currentPage === newPage) {
             return;
         }
 
@@ -89,6 +79,7 @@ export const pageLoader = (function() {
         changeTab(pageButton);
         container.appendChild(newPage);
         currentPage = newPage;
+
         // bring user to top of window
         window.scrollTo(0, 0);
     }
@@ -108,17 +99,6 @@ export const pageLoader = (function() {
         }
         newTab.classList.add('current-tab');
         currentPageButton = newTab;
-    }
-
-    // used to add changeTab functionality to links in the page
-    function addChangeTab(container) {
-        container.querySelectorAll('.tab-nav-link').forEach((node) => {
-            node.addEventListener('click', () => {
-                // this is an ugly little hack to get the button that was pressed and pass it in as the
-                // button click. Very ugly, but it works.
-                setCurrentPage(document.querySelector(`.page-nav li[tab=${node.getAttribute('tab')}]`));
-            });
-        });
     }
 
     return { setCurrentPage };

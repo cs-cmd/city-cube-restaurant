@@ -1,10 +1,20 @@
 :root {
     --bg-main: #0c0c0c;
+    --bg-lighter: #8f8f8f;
     --accent-main: #79d3d3;
     --accent-second: #caa999;
     --accent-blend-main: #94c5bf;
     --accent-blend-second: #afb7ac;
+    --text-light: #fff;
     --page-content-width: clamp(300px, 100%, 750px);
+
+    --valid-bg: #79d3d3;
+    --valid-border: #206262;
+    --invalid-bg: #D37979;
+    --invalid-border:#812A2A;
+
+    --anim-normal: .5s;
+    --anim-fast: .25s;
 }
 
 .page-break {
@@ -39,6 +49,13 @@ header > *, #tab-container, footer{
     width: var(--page-content-width);
 }
 
+.header-image {
+    cursor: pointer;
+    transition: filter var(--anim-normal);
+}
+.header-image:hover {
+    filter: brightness(50%)
+}
 
 .page-nav {
     list-style: none;
@@ -50,29 +67,30 @@ header > *, #tab-container, footer{
     justify-items: center;
 }
 
-.page-nav li {
+.page-button {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 2rem;
     width: min(100%, 15ch);
     color: var(--accent-blend-main);
-    transition: transform .25s;
+    transition: transform var(--anim-fast),
+        background-color var(--anim-fast);
     border: 1px solid var(--accent-blend-main);
     border-radius: 15px;
-
+    background-color: var(--bg-main);
 }
 
-.page-nav li:hover {
+.page-button:hover {
     transform: scale(1.12);
     cursor: pointer;
 }
 
-.page-nav li:active {
+.page-buttonactive {
     filter: brightness(.75);
 }
 
-li.current-tab {
+.page-button.current-tab {
     background-color: var(--accent-main);
     border: none;
     color: var(--bg-main);
@@ -96,10 +114,6 @@ figcaption {
     width: 100%;
     text-align: center;
 }
-#tab-container p {
-    text-align: justify;
-    padding: 5px;
-}
 
 #tab {
     display: flex;
@@ -108,7 +122,7 @@ figcaption {
     align-content: center;
 }
 
-#tab p {
+p {
     padding: 0px 0px;
     margin-left: 5px;
     margin-right: 5px;
@@ -143,8 +157,62 @@ footer {
     height: fit-content
 }
 
-
 .link-icon path {
     fill: var(--accent-blend-main);
+}
 
+.contact-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-auto-flow: column;
+    gap: 1.5rem;
+}
+
+.contact-form .form-label {
+    grid-column: 1/3;
+}
+.contact-form .form-input {
+    grid-column: 3/5;
+    transition: background-color var(--anim-fast),
+        border var(--anim-fast);
+}
+.contact-form .form-input:valid {
+    background-color: var(--valid-bg);
+    border: 1px solid var(--valid-border);
+}
+
+.contact-form .form-input:invalid {
+    background-color: var(--invalid-bg);
+    border: 1px solid var(--invalid-border);
+}
+.form-textarea {
+    width: 100%;
+    resize: none;
+    grid-column: 1 / 5;
+    aspect-ratio: 5 / 1;
+    padding: 5px;
+    margin: 0px;
+    border: none;
+    box-sizing: border-box;
+    background-color: var(--bg-lighter);
+    color: var(--text-light);
+    font-size: 1.15em;
+    border-radius: .5rem;
+}
+
+.form-button {
+    margin-top: 1rem;
+    grid-column: 2/4;
+    width: auto;
+}
+.form-button:hover {
+    background-color: var(--accent-main);
+    color: var(--bg-main);
+}
+
+.contact-form > .form-conf {
+    text-align: center;
+    grid-column: 1 / 5;
+    padding: 0px;
+    text-indent: 0px;
 }

@@ -6,5 +6,11 @@ document.querySelectorAll('.page-nav li').forEach(function(node) {
     });
 });
 
-document.addEventListener('load', pageLoader.setCurrentPage(document.querySelector('.page-nav li')));
+const homeButton = document.querySelector('.page-nav li');
+
+document.addEventListener('load', pageLoader.setCurrentPage(homeButton));
+
+document.querySelector('.header-image').addEventListener('click', () => {
+    pageLoader.setCurrentPage(homeButton);
+});
 
