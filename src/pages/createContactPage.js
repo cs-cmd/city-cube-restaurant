@@ -13,6 +13,21 @@ export function createContactPage() {
     contactForm.method = 'POST';
     contactForm.action = '#';
 
+    const nameInput = document.createElement('input');
+    nameInput.id = 'name-input';
+    nameInput.required = true;
+    nameInput.name = 'name';
+    nameInput.type = 'text';
+    nameInput.placeholder = 'John Doe';
+    nameInput.classList.add('form-input');
+    nameInput.minLength = 5;
+    nameInput.maxLength = 40;
+
+    const nameLabel = document.createElement('label');
+    nameLabel.htmlFor = nameInput.id;
+    nameLabel.innerText = 'Name *';
+    nameLabel.classList.add('form-label');
+
     // create email label and input
     const emailInput = document.createElement('input');
     emailInput.id = 'email-input';
@@ -59,45 +74,6 @@ export function createContactPage() {
     zipCodeLabel.innerText = 'Zipcode *';
     zipCodeLabel.classList.add('form-label');
 
-
-    // create password input/label
-    const passwordInput = document.createElement('input');
-    passwordInput.required = true;
-    passwordInput.name = 'password';
-    passwordInput.id = 'password-input';
-    passwordInput.type = 'password';
-    passwordInput.placeholder = 'Password';
-    passwordInput.minLength = '7';
-    passwordInput.classList.add('form-input');
-    passwordInput.pattern = '[A-Za-z0-9 !"#$%&\'()*+,-./:;<=>?@[\]^_`{|}~]{8,}'
-
-    const passwordLabel = document.createElement('label');
-    passwordLabel.htmlFor = passwordInput.id;
-    passwordLabel.innerText = 'Password *';
-    passwordLabel.classList.add('form-label');
-
-    // create confirm password input/label
-    const confPasswordInput = document.createElement('input');
-    confPasswordInput.required = true;
-    confPasswordInput.id = 'conf-password-input';
-    confPasswordInput.type = 'password';
-    confPasswordInput.placeholder = 'Confirm password';
-    confPasswordInput.classList.add('form-input');
-    confPasswordInput.addEventListener('input', () => {
-        if(passwordInput.value !== confPasswordInput.value) {
-            confPasswordInput.setCustomValidity('The passwords must match.');
-        }
-        else {
-            confPasswordInput.setCustomValidity('');
-        }
-        confPasswordInput.reportValidity();
-    })
-
-    const confPasswordLabel = document.createElement('label');
-    confPasswordLabel.htmlFor = confPasswordInput.id;
-    confPasswordLabel.innerText = 'Confirm Password *';
-    confPasswordLabel.classList.add('form-label');
-
     const commentsInput = document.createElement('textarea');
     commentsInput.id = 'comments-input';
     commentsInput.name = 'comments';
@@ -109,19 +85,15 @@ export function createContactPage() {
     submitButton.innerText = 'Contact!'
     submitButton.classList.add('page-button');
     submitButton.classList.add('form-button');
-    submitButton.addEventListener('click', (e) => {
-        // add hashed password to hidden input, use that in sending to server (ex.)
-    });
 
     const submitConfirmation = document.createElement('p');
     submitConfirmation.classList.add('form-conf');
 
     // add all elements in batches to form
+    contactForm.append(nameLabel, nameInput);
     contactForm.append(emailInputLabel, emailInput);
     contactForm.append(countryInputLabel, countryInput);
     contactForm.append(zipCodeLabel, zipCodeInput);
-    contactForm.append(passwordLabel, passwordInput);
-    contactForm.append(confPasswordLabel, confPasswordInput);
     contactForm.appendChild(commentsInput);
     contactForm.appendChild(submitButton);
     contactForm.appendChild(submitConfirmation);
