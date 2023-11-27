@@ -1,16 +1,17 @@
 import { pageLoader } from "./loadContent";
 
-document.querySelectorAll('.page-nav li').forEach(function(node) {
+// Get page buttons and add setCurrentPage function to it.
+document.querySelectorAll('.page-nav li[tab]').forEach(function(node) {
         node.addEventListener('click', () => {
-            pageLoader.setCurrentPage(node);
+            pageLoader.setCurrentPage(node.getAttribute('tab'));
     });
 });
 
-const homeButton = document.querySelector('.page-nav li');
+// on load, set current page to 'home'
+document.addEventListener('load', pageLoader.setCurrentPage('home'));
 
-document.addEventListener('load', pageLoader.setCurrentPage(homeButton));
-
+// when header image is clicked, send user to home
 document.querySelector('.header-image').addEventListener('click', () => {
-    pageLoader.setCurrentPage(homeButton);
+    pageLoader.setCurrentPage('home');
 });
 
